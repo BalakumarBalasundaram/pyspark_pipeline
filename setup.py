@@ -6,9 +6,6 @@ if __name__ == '__main__':
     with open("requirements.txt", "r") as filein:
         requirements = filein.readlines()
 
-    with open("requirements-dev.txt", "r") as filein:
-        test_requirements = filein.readlines()
-
     with open("version.txt", "r") as filein:
         version = filein.read()
 
@@ -51,10 +48,9 @@ if __name__ == '__main__':
         package_dir={"": "src"},
         packages=setuptools.find_packages(where="src"),
         python_requires=">=3.6",
-        # setup_requires=setup_requirements,
+        setup_requires=setup_requirements,
         install_requires=requirements,
         test_suite="etlpackage",
-        tests_require=test_requirements,
         version=version,
         zip_safe=False,
     )

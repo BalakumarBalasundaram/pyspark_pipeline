@@ -1,0 +1,4 @@
+/build/
+/dist/
+/src/etl_generic_pipeline_pyspark.egg-info/
+/venv/
