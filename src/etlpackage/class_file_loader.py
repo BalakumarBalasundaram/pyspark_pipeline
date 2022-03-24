@@ -2,21 +2,25 @@ from src.etlpackage import class_xml_reader
 
 
 class FileLoader(object):
-    def fileReader(spark, filePath, fileExtension):
-        if fileExtension == '.csv':
-            dataframe = spark.read.csv(filePath, header=True, inferSchema=True)
-        elif fileExtension == '.orc':
-            dataframe = spark.read.orc(filePath)
-        elif fileExtension == '.parquet':
-            dataframe = spark.read.parquet(filePath)
-        elif fileExtension == '.json':
+
+    def __init__(self, spark):
+        self.spark = spark
+
+    def filereader(self, filepath, fileextension):
+        if fileextension == '.csv':
+            dataframe = self.spark.read.csv(filepath, header=True, inferSchema=True)
+        elif fileextension == '.orc':
+            dataframe = self.spark.read.orc(filepath)
+        elif fileextension == '.parquet':
+            dataframe = self.spark.read.parquet(filepath)
+        elif fileextension == '.json':
             # reader = jsonReader()
-            dataframe = spark.read.option("multiline", "true").json(filePath)
+            dataframe = self.spark.read.option("multiline", "true").json(filepath)
             # dataframes = reader.findJSONDataframes()
-        elif fileExtension == '.tsv':
-            dataframe = spark.read.option("delimiter", "\t").csv(filePath, header=True)
-        elif fileExtension == '.xml':
-            reader = class_xml_reader.xmlReader(spark)
-            dataframe = reader.getXMLDataFrame(filePath)
+        elif fileextension == '.tsv':
+            dataframe = self.spark.read.option("delimiter", "\t").csv(filepath, header=True)
+        elif fileextension == '.xml':
+            reader = class_xml_reader.xmlReader(self.spark)
+            dataframe = reader.getXMLDataFrame(filepath)
 
         return dataframe

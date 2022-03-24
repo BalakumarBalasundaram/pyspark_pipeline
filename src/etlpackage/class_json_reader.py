@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession, functions as F, types as T
 
+
 class jsonReader:
     def __init__(self, spark, dataframe):
         self.spark = spark
@@ -14,7 +15,8 @@ class jsonReader:
             if isinstance(Type, T.StructType):
                 nestedDFColNames = Type.fieldNames()
                 newDataframe = self.spark.createDataFrame([], Type)
-                testDF = self.dataframe.withColumn(name, F.from_json(self.dataframe[x], T.MapType(T.StringType(), T.MapType.jsonValue())))
+                testDF = self.dataframe.withColumn(name, F.from_json(self.dataframe[x],
+                                                                     T.MapType(T.StringType(), T.MapType.jsonValue())))
                 testDF.show()
 
         return dataframesInDocument
