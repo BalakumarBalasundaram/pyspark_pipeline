@@ -20,10 +20,11 @@ class MetamodelExtractor:
         except:
             print("Metamodel doesnt exists for this source")
 
-    def extract_metamodel_df_by_process_type(self, extract_df, process_type):
+    def extract_metamodel_df_by_process_type(self, src_stream_id, process_type):
         try:
-            metamodel_df = extract_df.filter(extract_df.PROCESS_TYPE == process_type)
-            metamodel_df.show(vertical=True)
-            return metamodel_df
+            metamodel_by_source_df = self.extract_metamodel_df_by_stream_id(src_stream_id)
+            metamodel_filtered_df = metamodel_by_source_df.filter(metamodel_by_source_df.PROCESS_TYPE == process_type)
+            metamodel_filtered_df.show(vertical=True)
+            return metamodel_filtered_df
         except:
             print("Metamodel doesnt exists for this process type")
