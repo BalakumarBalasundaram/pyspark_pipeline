@@ -1,6 +1,7 @@
 from pyspark.sql import SparkSession
 import re
 
+
 class xmlReader:
     def __init__(self, spark):
         self.spark = spark
@@ -13,7 +14,8 @@ class xmlReader:
         self.valueTuples = []
         self.valueTupleArr = []
         self.readFlag = False
-    #can maybe look for a way of doing things, that doesn't require this many arrays
+
+    # can maybe look for a way of doing things, that doesn't require this many arrays
 
     def getXMLHeader(self, filePath):
         """opens the file and extracts the header/column names as an array"""
@@ -22,20 +24,20 @@ class xmlReader:
             while line:
                 line = f.readline()
 
-                #finds the point where a row ends and breaks after the first row ends
+                # finds the point where a row ends and breaks after the first row ends
                 if line.strip() == "</row>":
                     self.readFlag = False
                     break
 
-                #finds the column names from a row and appends them to a list
+                # finds the column names from a row and appends them to a list
                 if self.readFlag == True and line.strip() != "":
                     self.matchArr.append(self.headerRe.findall(line))
 
-                #finds the point where a row starts
+                # finds the point where a row starts
                 if line.strip() == "<row>":
                     self.readFlag = True
 
-        #puts the values into a one dimensional array from the original two dimensional array
+        # puts the values into a one dimensional array from the original two dimensional array
         for match in self.matchArr:
             match[0] = match[0].replace("<", "").replace(">", "").replace("/", "")
             self.header.append(match[0])
@@ -47,32 +49,32 @@ class xmlReader:
             while line:
                 line = f.readline()
 
-                #finds the point where a row ends
+                # finds the point where a row ends
                 if line.strip() == "</row>":
                     self.readFlag = False
 
-                #adds values to a list of values
+                # adds values to a list of values
                 if self.readFlag == True and line.strip() != "":
                     self.valueArr.append(self.valueRe.findall(line))
 
-                #finds the point where a row starts
+                # finds the point where a row starts
                 if line.strip() == "<row>":
                     self.readFlag = True
         for value in self.valueArr:
 
-            #handles null fields
+            # handles null fields
             if not value:
                 self.values.append("")
 
-            #removes xml formatting
+            # removes xml formatting
             else:
                 value[0] = value[0].replace("<", "").replace(">", "")
                 self.values.append(value[0])
 
-        #takes the array of elements and puts them into an array of tuples, with one tuple representing a row
-        for i in range(1, int(len(self.values)/amountOfColumns)):
+        # takes the array of elements and puts them into an array of tuples, with one tuple representing a row
+        for i in range(1, int(len(self.values) / amountOfColumns)):
             for x in range(amountOfColumns):
-                self.valueTuples.append(self.values[x*i])
+                self.valueTuples.append(self.values[x * i])
             self.valueTupleArr.append(tuple(self.valueTuples))
             self.valueTuples = []
 

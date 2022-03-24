@@ -1,4 +1,5 @@
-from etlpackage import class_xml_reader
+from src.etlpackage import class_xml_reader
+
 
 class FileLoader(object):
     def fileReader(spark, filePath, fileExtension):
