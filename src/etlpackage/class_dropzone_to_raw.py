@@ -1,12 +1,14 @@
 # define Dropzone to Raw pipeline
+from pyspark.sql import SparkSession
+
 from src.etlpackage import class_utils
 import os
 import re
 
 
 class DropZoneToRaw:
-    def __init__(self, spark, inp_df):
-        self.inp_df = inp_df
+    def __init__(self, spark, metadata_df):
+        self.metadata_df = metadata_df
         self.dbutils = self.get_dbutils(spark)
 
     @staticmethod
@@ -31,12 +33,12 @@ class DropZoneToRaw:
 
         return utils
 
-    def runprocess(self, azure_url, raw_odl_loc, create_date):
+    def copy_files(self, azure_url, raw_odl_loc, create_date):
         print("###########################DropZone to RAW Pipeline ##################################")
-        input_file = self.inp_df.select("STREAM_NM").rdd.flatMap(list).collect()[0]
-        landing_dir = self.inp_df.select("LANDING_DIR").rdd.flatMap(list).collect()[0]
+        input_file = self.metadata_df.select("STREAM_NM").rdd.flatMap(list).collect()[0]
+        landing_dir = self.metadata_df.select("LANDING_DIR").rdd.flatMap(list).collect()[0]
         azure_land_dir = landing_dir.replace("/mnt/shareddisk", azure_url + "/tmp")
-        raw_odl_loc = self.inp_df.select("RAW_ODL_LOC").rdd.flatMap(list).collect()[0]
+        raw_odl_loc = self.metadata_df.select("RAW_ODL_LOC").rdd.flatMap(list).collect()[0]
         azure_raw_dir = azure_url + "/raw" + raw_odl_loc + create_date.replace("-", '')
 
         print("input file name is :", input_file)
