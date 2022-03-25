@@ -20,7 +20,7 @@ if __name__ == '__main__':
     ]
 
     setuptools.setup(
-        name="etl-generic-pipeline-pyspark",
+        name="etl_generic_pipeline",
         author="Team 1 Developers",
         author_email="team1developer@example.com",
         description="etl generic pipeline package",

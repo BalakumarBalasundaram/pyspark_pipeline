@@ -1,6 +1,6 @@
 # define Raw to Base pipeline
 from pyspark.sql.functions import lit
-from src.etlpackage import class_utils, class_globalvars
+from src.etlpackage import class_utils
 import datetime
 
 INP_SRC_SYS = "bgmax"
