@@ -36,8 +36,14 @@ def csv(line, cell):
     # We use Pandas' read_csv function to parse
     # the CSV string.
     return pd.read_csv(sio)
- 
 
-# Start adding more components/functionalities.
+%%csv
+col1,col2,col3
+0,1,2
+3,4,5
+7,8,9 
+```
+
+##Start adding more components/functionalities.
  Run process_csv.ipynb to test the flow and add more functionalities and add changes to your feature branch
-# Working on package/library creation in feature branches with our Hackathon team
+##Working on package/library creation in feature branches with our Hackathon team
