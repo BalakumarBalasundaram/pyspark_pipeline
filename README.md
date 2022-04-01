@@ -12,6 +12,14 @@ Clone the repo
 4. Run init_setup.ipynb creates the Landing dir, Lookup dir
 5. Copies the file from Data dir to Lookup & Landing dir
 
+
+ToDo:
+Implement Header Trailer validation
+Implement Audit logging
+Tech reconcillation
+Database file I/O
+
+
 # Start adding more components/functionalities.
  Run process_csv.ipynb to test the flow and add more functionalities and add changes to your feature branch
 # Working on package/library creation in feature branches with our Hackathon team
