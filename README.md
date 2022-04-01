@@ -20,7 +20,7 @@ Tech reconcillation
 Database file I/O
 
 Ipython Magic API
-'''
+```
 from IPython.core.magic import (register_line_magic, 
                                 register_cell_magic)
                                 
@@ -36,7 +36,7 @@ def csv(line, cell):
     # We use Pandas' read_csv function to parse
     # the CSV string.
     return pd.read_csv(sio)
-'''   
+ 
 
 # Start adding more components/functionalities.
  Run process_csv.ipynb to test the flow and add more functionalities and add changes to your feature branch
