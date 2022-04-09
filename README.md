@@ -47,3 +47,12 @@ col1,col2,col3
 ##Start adding more components/functionalities.
  Run process_csv.ipynb to test the flow and add more functionalities and add changes to your feature branch
 ##Working on package/library creation in feature branches with our Hackathon team
+
+Evolution Over Time
+- Prepare a UML diagram and a sequence diagram
+- Write Unit test scripts, and automation
+- Prepare a template driven framework for ETL operation
+- Document, packaging of this feature
+- Design Integration system for this ETL framework
+- Design Development, Staging, Pre-production and Production Environment to test this feature 
+- Figure out how to integrate this framework with ML models
