@@ -50,6 +50,7 @@ col1,col2,col3
 
 Evolution Over Time
 - Prepare a UML diagram and a sequence diagram
+- Develop High Level Pyspark Based ETL API 
 - Write Unit test scripts, and automation
 - Prepare a template driven framework for ETL operation ( Design a low level Ansible library for PySpark Based ETL Pipeline)
 - Azure DevOps -> Invoke Ansible Playbook & Role (Develop Pyspark Based template plugin) -> Action: Load Libaries(PySpark ETL Library) & Invoke Databricks via databricks cli to submit job (Batch Mode ) or Access Jupyter Notebook to perform interactive coding (Transform Data from raw to different region on yourself)
