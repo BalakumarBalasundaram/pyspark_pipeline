@@ -62,7 +62,7 @@ Evolution Over Time
 Questions:
 
 What is essential for a ELT/ETL framework to achieve building faster datalake/datalakehouses?
-1. May be a simplified writing and executing ETL’s
+1. Should it be a simplified writing and executing ETL’s
 2. Should it be simple YAML Configuration?
 3. Should it support simple unit test and E2E test?
 4. Should we use connectors built on top of apache spark to do source/sink data?
