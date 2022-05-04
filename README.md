@@ -58,3 +58,18 @@ Evolution Over Time
 - Design Integration system for this ETL framework
 - Design Development, Staging, Pre-production and Production Environment to test this feature 
 - Figure out how to integrate this framework with ML models
+
+Questions:
+
+What is essential for a ELT/ETL framework to achieve building faster datalake/datalakehouses?
+1. May be a simplified writing and executing ETL’s
+2. Should it be simple YAML Configuration?
+3. Should it support simple unit test and E2E test?
+4. Should we use connectors built on top of apache spark to do source/sink data?
+5. How to structure the Spark ETL projects and speed up the development?
+6. With No code experience how to setup a data pipeline
+7. Should we use a library to build a data lake by configuration & separate input & output operation from transformation?
+8. Building Data lakehouse on top of data lake, benefits?
+9. Shoud it be simple SQL to build ELT pipelines on a data lakehouse? How to write it as notebook and schedule it?
+10. Should we do transformation only by SQL? 
+11. Should multi dimenionsional filtering & sampling be done directly on a storage (Data lakehouses) ?
