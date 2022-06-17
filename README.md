@@ -15,3 +15,7 @@ Clone the repo
 # Start adding more components/functionalities.
  Run process_csv.ipynb to test the flow and add more functionalities and add changes to your feature branch
 # Working on package/library creation in feature branches with our Hackathon team
+
+
+Mlflow docker compose
+https://github.com/Toumash/mlflow-docker
